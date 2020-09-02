@@ -59,7 +59,8 @@ def main():
         show_file2.title('+')
         show_file3.image(second_uploaded_file, width=100)
         show_file4.title('=')
-        show_file5.image(image1, width=300)
+        # show_file5.image(image1, width=300)
+
         # Read images to opencv
         # src_img = cv2.imencode('jpg', image1)
         # dst_img = cv2.imencode('jpg',image2)
@@ -67,6 +68,8 @@ def main():
         show_file = st.empty()
         show_file.info('Please upload a file')
 
-        
+    src_img = cv2.imencode('jpg', image1_arr)
+    dst_img = cv2.imencode('jpg', image2_arr)
+
 if __name__ == "__main__":
     main()

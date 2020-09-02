@@ -8,7 +8,7 @@ import urllib
 
 from face_detection import select_face
 from face_swap import face_swap
-
+from PIL import Image
 import cv2
 import argparse
 # sys.path.append('tl_gan')
@@ -33,26 +33,24 @@ def main():
         st.image(second_uploaded_file, width=200)
 
     # Read images to opencv
-    src_img = cv2.imread(uploaded_file)
-    dst_img = cv2.imread(second_uploaded_file)
+    # src_img = cv2.imread(uploaded_file)
+    # dst_img = cv2.imread(second_uploaded_file)
+    image1 = Image.open(uploaded_file)
+    image2 = Image.open(second_uploaded_file)
 
+    image1_arr = np.array(image1)
+    image2_arr = np.array(image2)
     # Select src face
-    src_points, src_shape, src_face = select_face(src_img)
+    src_points, src_shape, src_face = select_face(image1_arr)
     # Select dst face
-    dst_points, dst_shape, dst_face = select_face(dst_img)
+    dst_points, dst_shape, dst_face = select_face(image2_arr)
 
     if src_points is None or dst_points is None:
         print('Detect 0 Face !!!')
         exit(-1)
 
-    output = face_swap(src_face, dst_face, src_points, dst_points, dst_shape, dst_img, args)
+    output = face_swap(src_face, dst_face, src_points, dst_points, dst_shape, image2_arr)
 
-    dir_path = os.path.dirname(args.out)
-    if not os.path.isdir(dir_path):
-        os.makedirs(dir_path)
-
-    cv2.imwrite('result.jpg', output)
-    
     if st.button('Swap Faces'):
         st.image(output)
 
