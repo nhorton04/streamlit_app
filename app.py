@@ -56,15 +56,13 @@ def main():
         output2 = face_swap(src_face1, dst_face1, src_points1, dst_points1, dst_shape1, image1_arr)
 
 
+        if st.button('Swap Faces ⬇️'):
+            st.image(output)
+
+        if st.button('Swap Faces ⬆️'):
+            st.image(output2)
     except:
-        st.title('No Images Uploaded Yet')
-
-    if st.button('Swap Faces ⬇️'):
-        st.image(output)
-
-    if st.button('Swap Faces ⬆️'):
-        st.image(output2)
-
+        st.title('upload images')
 # @st.cache(allow_output_mutation=True, hash_funcs=TL_GAN_HASH_FUNCS)
 # def load_model():
 #     """
