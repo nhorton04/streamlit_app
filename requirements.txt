@@ -1,4 +1,5 @@
 sk-video==1.1.10
+scikit-video==1.1.10
 opencv_python==4.4.0.42
 av==8.0.2
 tqdm==4.48.2
