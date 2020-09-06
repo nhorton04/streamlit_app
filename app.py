@@ -32,9 +32,7 @@ def main():
         if second_uploaded_file is not None:
             st.image(second_uploaded_file, width=200)
 
-        # Read images to opencv
-        # src_img = cv2.imread(uploaded_file)
-        # dst_img = cv2.imread(second_uploaded_file)
+
         image1 = Image.open(uploaded_file)
         image2 = Image.open(second_uploaded_file)
 
@@ -44,6 +42,7 @@ def main():
         # Select src face
         src_points, src_shape, src_face = select_face(image1_arr)
         src_points1, src_shape1, src_face1 = select_face(image2_arr)
+
         # Select dst face
         dst_points, dst_shape, dst_face = select_face(image2_arr)
         dst_points1, dst_shape1, dst_face1 = select_face(image1_arr)
@@ -51,6 +50,7 @@ def main():
         if src_points is None or dst_points is None:
             print('No Face Detected')
             exit(-1)
+
         output = face_swap(src_face, dst_face, src_points, dst_points, dst_shape, image2_arr)
 
         output2 = face_swap(src_face1, dst_face1, src_points1, dst_points1, dst_shape1, image1_arr)
