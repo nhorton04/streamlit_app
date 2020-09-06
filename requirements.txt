@@ -1,5 +1,4 @@
 sk-video==1.1.10
-scikit-video==1.1.10
 opencv_python==4.4.0.42
 av==8.0.2
 tqdm==4.48.2
@@ -11,5 +10,4 @@ scipy==1.5.2
 numpy==1.19.1
 torch==1.4.0
 Pillow==7.2.0
-skvideo==0.1.1
 tensorflow==2.3.0
